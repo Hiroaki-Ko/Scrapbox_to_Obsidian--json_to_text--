@@ -1,18 +1,12 @@
 from save import save
 import json
-import os
 from save import save
 
-dir_path = '/Users/bayashihi/Documents/VScode/paper/scrapbox'
+dir_path = '/Users/bayashihi/Documents/VScode/paper/scrapbox' 
+#path of directry which you want to save text files converted.
 
-def save(dir_path, filename, file_content, mode='w'):
-    os.makedirs(dir_path, exist_ok=True)
-    with open(os.path.join(dir_path, filename), mode) as f:
-        f.write(file_content)
-        f.close()
-
-with open('scrapbox.json') as f:
-    js = json.load(f) # ここですでにtextというjsonが辞書としてよまれている？
+with open('scrapbox.json') as f: #put your JSON file named "scrapbox.json" in the root directry.
+    js = json.load(f) # 
     f.close()
 
 cont_list = js['pages']
@@ -24,8 +18,3 @@ for a in cont_list:
     content = '\n'.join(cont_pre)
     
     save(dir_path, title + '.md', content)
-
-
-
-# data = json.load(json_open) で、jsonを文字列に
-# with open(filename, mode = 'w')as f: f.write(text)
